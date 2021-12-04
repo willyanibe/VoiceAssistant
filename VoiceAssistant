@@ -4,14 +4,15 @@ import playsound
 import speech_recognition as sr
 from gtts import gTTS
 
-
+#This function contains code that initialize the text to speech engine (gtts) and assigns a voice and language to it
 def speak(text):
     tts = gTTS(text=text, lang="en")
     filename = "voice.mp3"
     tts.save(filename)
     playsound.playsound(filename)
 
-
+#This function gets and recognizes human voice from the noise using the speechrecognition library. It also throws an error
+#when it cannot recognize a voice
 def get_audio():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -33,4 +34,4 @@ if "hello" in text:
 elif "what is your name" in text:
     speak("My name is Wilson")
 
-get_audio()
+#get_audio()
